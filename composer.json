@@ -9,5 +9,13 @@
             "email": "jim.a.driscoll@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "JdOrm\\": ["lib/JdOrm/"]
+        }
+    },
+    "scripts": {
+        "parse-schema": "bin/parse-schema"
+    }
 }

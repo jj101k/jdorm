@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+require_once "vendor/autoload.php";
+if(count($argv) < 2) {
+    die("Usage: {$argv[0]} <schema xml file>\n");
+}
+$parser = new \JdOrm\SchemaParser($argv[1]);
+print json_encode($parser->parse(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
