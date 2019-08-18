@@ -19,6 +19,7 @@ abstract class Base implements \JsonSerializable {
             if(property_exists($this, $p)) {
                 $this->$p = "" . $value;
             } else {
+                $discovered = null;
                 foreach(get_object_vars($this) as $k => $v) {
                     if(strtolower($k) == strtolower($p)) {
                         $discovered = $k;
