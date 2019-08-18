@@ -19,7 +19,18 @@ abstract class Base implements \JsonSerializable {
             if(property_exists($this, $p)) {
                 $this->$p = "" . $value;
             } else {
-                throw new \Exception("Unrecognised attribute {$name} at {$path}");
+                foreach(get_object_vars($this) as $k => $v) {
+                    if(strtolower($k) == strtolower($p)) {
+                        $discovered = $k;
+                        break;
+                    }
+                }
+                if($discovered) {
+                    trigger_error("Presuming that {$discovered} was meant");
+                    $this->$discovered = "" . $value;
+                } else {
+                    throw new \Exception("Unrecognised attribute {$name} at {$path}");
+                }
             }
         }
         foreach($xml->children() as $name => $child) {
