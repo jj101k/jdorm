@@ -35,7 +35,7 @@ abstract class Base implements \JsonSerializable {
                 $r = $p->parse("{$path}/{$name}/{$i}", $child);
             } else {
                 if($i and !$multiple) {
-                    throw new Error("Parse failure at {$path}: Multiple {$name}");
+                    throw new \Exception("Parse failure at {$path}: Multiple {$name}");
                 }
                 $r = $p->parse("{$path}/{$name}", $child);
             }
